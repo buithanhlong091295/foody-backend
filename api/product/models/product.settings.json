@@ -2,14 +2,16 @@
   "kind": "collectionType",
   "collectionName": "products",
   "info": {
-    "name": "product"
+    "name": "product",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
-    "title": {
+    "name": {
       "type": "string",
       "required": true
     },
@@ -29,20 +31,15 @@
         "videos"
       ],
       "plugin": "upload",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
+    "productID": {
+      "type": "string"
     },
     "categories": {
       "collection": "category",
       "via": "products"
-    },
-    "Custom_field": {
-      "type": "component",
-      "repeatable": true,
-      "component": "custom.custom-field"
     },
     "status": {
       "type": "enumeration",
