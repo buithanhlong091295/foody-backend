@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_custom_products",
+  "info": {
+    "name": "products",
+    "icon": "apple-alt"
+  },
+  "options": {},
+  "attributes": {
+    "productID": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "amount": {
+      "type": "biginteger"
+    }
+  }
+}
