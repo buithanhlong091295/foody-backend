@@ -20,6 +20,10 @@
       "via": "categories",
       "collection": "product",
       "dominant": true
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
