@@ -1,5 +1,8 @@
 'use strict';
 
+const { sanitizeEntity } = require('strapi-utils');
+const { Types } = require("mongoose");
+
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
@@ -8,21 +11,31 @@
 module.exports = {
     async getCart(ctx) {
         const query = {
-          userID: ctx.request.query["userID"],
+            userID: ctx.request.query["userID"],
         };
-        const cart = await strapi
-          .query("carts")
-          .model.aggregate([{ $match: query }, { $sort: { createdAt: -1 } }, {$limit: 1}]);
+        const res = await strapi
+            .query("cart")
+            .model.aggregate([{ $match: query }, { $sort: { createdAt: -1 } }, { $limit: 1 }]);
+        const cart = sanitizeEntity(res[0], {
+            model: strapi.models.cart,
+        });
         if (cart && cart.products.length > 0) {
             for (let i = 0; i < cart.products.length; i++) {
-                const product = await strapi.services.products.findOne({
-                    id: cart.products[i].productID,
+                console.log(strapi.services)
+                const componentProduct = await strapi
+                    .services['components-custom-products']
+                    .findOne({ id:  Types.ObjectId(cart.products[i].ref)});
+                if (!componentProduct) {
+                    continue
+                }
+                const product = await strapi.services['product'].findOne({
+                    id: Types.ObjectId(componentProduct.productID),
                 });
                 if (product) {
                     cart.products[i] = {
-                        productID: cart.products[i].productID,
-                        quantity: cart.products[i].quantity,
-                        amount: cart.products[i].amount,
+                        productID: componentProduct.productID,
+                        quantity: componentProduct.quantity,
+                        amount: componentProduct.amount,
                         productName: product.name,
                         productImage: product.image,
                     }
@@ -30,5 +43,5 @@ module.exports = {
             }
         }
         return cart
-      }
+    }
 };
