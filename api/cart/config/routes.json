@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/carts/me",
+      "handler": "cart.getCart",
+      "config": {
+        "policies": ["before_find"]
+      }
+    },
+    {
+      "method": "GET",
       "path": "/carts/count",
       "handler": "cart.count",
       "config": {
