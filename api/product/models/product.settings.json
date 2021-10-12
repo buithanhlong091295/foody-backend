@@ -55,7 +55,8 @@
       "default": false
     },
     "quantity": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     }
   }
 }
