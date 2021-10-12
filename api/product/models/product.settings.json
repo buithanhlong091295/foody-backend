@@ -53,6 +53,9 @@
     "isDeleted": {
       "type": "boolean",
       "default": false
+    },
+    "quantity": {
+      "type": "integer"
     }
   }
 }
