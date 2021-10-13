@@ -21,7 +21,6 @@ module.exports = {
         });
         if (cart && cart.products.length > 0) {
             for (let i = 0; i < cart.products.length; i++) {
-                console.log(strapi.services)
                 const componentProduct = await strapi
                     .services['components-custom-products']
                     .findOne({ id:  Types.ObjectId(cart.products[i].ref)});
@@ -35,9 +34,9 @@ module.exports = {
                     cart.products[i] = {
                         productID: componentProduct.productID,
                         quantity: componentProduct.quantity,
-                        amount: componentProduct.amount,
                         name: product.name,
                         image: product.image,
+                        price: product.price,
                     }
                 }
             }
