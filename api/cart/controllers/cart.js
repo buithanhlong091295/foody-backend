@@ -36,8 +36,8 @@ module.exports = {
                         productID: componentProduct.productID,
                         quantity: componentProduct.quantity,
                         amount: componentProduct.amount,
-                        productName: product.name,
-                        productImage: product.image,
+                        name: product.name,
+                        image: product.image,
                     }
                 }
             }
