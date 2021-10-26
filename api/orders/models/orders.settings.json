@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "name": "Order",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userID": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "totalAmount": {
+      "type": "biginteger"
+    },
+    "isPaid": {
+      "type": "boolean",
+      "default": false
+    },
+    "products": {
+      "type": "component",
+      "repeatable": true,
+      "component": "custom.products"
+    },
+    "address": {
+      "type": "richtext"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "PENDING",
+        "ACCEPTED",
+        "ARE_BEING_DELIVERED",
+        "SUCCESS",
+        "REFUNDED",
+        "CANCELED"
+      ]
+    },
+    "paymentType": {
+      "type": "enumeration",
+      "enum": [
+        "ONLINE",
+        "DIRECT"
+      ]
+    }
+  }
+}
