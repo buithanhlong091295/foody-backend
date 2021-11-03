@@ -53,6 +53,9 @@
         "ONLINE",
         "DIRECT"
       ]
+    },
+    "fullName": {
+      "type": "string"
     }
   }
 }
