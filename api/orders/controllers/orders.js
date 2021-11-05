@@ -7,19 +7,19 @@
 
 module.exports = {
     async statistics(ctx) {
-        let from = new Date(ctx.request.query["from"]).toISOString()
-        let fromInt64 = ctx.request.query["from"]
-        let to = new Date(ctx.request.query["from"]).toISOString()
-        let toInt64 = ctx.request.query["to"]
+        let from = new Date(parseInt(ctx.request.query["from"]))
+        let fromInt64 = parseInt(ctx.request.query["from"])
+        let to = new Date(parseInt(ctx.request.query["to"]))
+        let toInt64 = parseInt(ctx.request.query["to"])
         const null_date = new Date(0);
         const statistics = await strapi.query("orders").model.aggregate([
             {
                 $match: {
-                  status: { $in: ["SUCCESS"] },
+                  status: "SUCCESS",
                   isPaid: true,
                   createdAt: {
-                      "$gte": from,
-                      "$lte": to,
+                      $gte: from,
+                      $lte: to,
                   }
                 },
             },
@@ -62,10 +62,12 @@ module.exports = {
                 }
             }
         ])
+        // console.log(statistics)
         let data = {}
         for (let i = 0; i < statistics.length ; i++) {
-            data[statistics.timestamp] = statistics[i]
+            data[statistics[i].timestamp] = statistics[i]
         }
+        // console.log(data)
         let res = []
 
         for(let i = 0;fromInt64 <= toInt64; i++) {
