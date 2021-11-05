@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/orders/admin/statistics",
+      "handler": "orders.statistics",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/orders/count",
       "handler": "orders.count",
       "config": {
