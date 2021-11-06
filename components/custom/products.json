@@ -12,6 +12,12 @@
     },
     "quantity": {
       "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "biginteger"
     }
   }
 }
