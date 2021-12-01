@@ -10,6 +10,7 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "image-to-base64": "^2.2.0",
     "strapi": "^3.1.4",
     "strapi-admin": "3.6.8",
     "strapi-connector-mongoose": "3.6.8",
