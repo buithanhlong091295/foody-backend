@@ -24,6 +24,10 @@
     "isDeleted": {
       "type": "boolean",
       "default": false
+    },
+    "image": {
+      "type": "string",
+      "required": true
     }
   }
 }
