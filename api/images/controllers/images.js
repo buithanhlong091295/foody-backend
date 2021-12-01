@@ -9,7 +9,8 @@ var fs = require('fs');
 module.exports = {
     async create(ctx) {
         const res = await strapi.query("images").create({ value: ctx.request.body["value"] })
-        return res
+        base64_decode(res.value, './public/uploads/' + res.id + '.png');
+        return {id: res.id}
     },
 
     async findOne(ctx) {
@@ -28,4 +29,4 @@ function base64_decode(base64str, file) {
     var bitmap = new Buffer(base64str, 'base64');
     // write buffer to file
     fs.writeFileSync(file, bitmap);
-  }
+}
