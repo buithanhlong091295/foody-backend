@@ -27,7 +27,7 @@
     {
       "method": "GET",
       "path": "/categories/search",
-      "handler": "orders.searchByName",
+      "handler": "category.searchByName",
       "config": {
         "policies": []
       }
