@@ -16,7 +16,7 @@ module.exports = {
 
   async searchByName(ctx) {
     if (!ctx.request.query['name']) {
-      return await strapi.services.product.find({}); 
+      return await strapi.services.category.find({}); 
     }
     const res = await strapi.services.category.find({ name: {$regex: ctx.request.query["name"]} }); 
     return res
