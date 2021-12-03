@@ -82,5 +82,13 @@ module.exports = {
             fromInt64 += 86400000
         }
         return res
-    }
+    },
+
+    async searchByMail(ctx) {
+        if (!ctx.request.query['email']) {
+          return await strapi.services.orders.find({}); 
+        }
+        const res = await strapi.services.orders.find({ email: {$regex: ctx.request.query["email"]} }); 
+        return res
+      }
 };

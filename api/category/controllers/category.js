@@ -13,4 +13,12 @@ module.exports = {
     const entity = await strapi.services.category.findOne({ slug });
     return sanitizeEntity(entity, { model: strapi.models.category });
   },
+
+  async searchByName(ctx) {
+    if (!ctx.request.query['name']) {
+      return await strapi.services.product.find({}); 
+    }
+    const res = await strapi.services.category.find({ name: {$regex: ctx.request.query["name"]} }); 
+    return res
+  }
 };
