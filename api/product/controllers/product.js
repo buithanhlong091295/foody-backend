@@ -18,7 +18,7 @@ module.exports = {
     if (!ctx.request.query['name']) {
       return await strapi.services.product.find({}); 
     }
-    const res = await strapi.services.product.find({ name: {$regex: ctx.request.query["name"]} }); 
+    const res = await strapi.services.product.find({ name: {$regex: ctx.request.query["name"]}, isDeleted: false }); 
     return res
   }
 };
