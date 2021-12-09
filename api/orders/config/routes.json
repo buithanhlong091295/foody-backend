@@ -26,6 +26,14 @@
     },
     {
       "method": "GET",
+      "path": "/orders/admin/statistics/num",
+      "handler": "orders.statisticsNumOrders",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/orders/search",
       "handler": "orders.searchByMail",
       "config": {
