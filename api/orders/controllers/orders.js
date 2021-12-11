@@ -169,4 +169,25 @@ module.exports = {
         }
         return res
     },
+
+    async statisticsOrderWithPaymentType(ctx) {
+        const statistics = await strapi.query("orders").model.aggregate([
+            {
+                $match: {
+                  isPaid: true,
+                },
+            },
+            {
+                $group: {
+                    _id: "$paymentType",
+                    totalOrders: {
+                        "$sum": 1,
+                    },
+                },
+            },
+        ])
+        // console.log(statistics)
+        
+        return statistics
+    },
 };
