@@ -186,8 +186,18 @@ module.exports = {
                 },
             },
         ])
-        // console.log(statistics)
+        let res = []
+        res.push({_id: "DIRECT", totalOrders: 0})
+        res.push({_id: "ONLINE", totalOrders: 0})
+        for (let i = 0; i < statistics.length; i++) {
+            if (statistics[i]._id == "DIRECT") {
+                res[0].totalOrders = statistics[i].totalOrders
+            }
+            if (statistics[i]._id == "ONLINE") {
+                res[1].totalOrders = statistics[i].totalOrders
+            }
+        }
         
-        return statistics
+        return res
     },
 };
