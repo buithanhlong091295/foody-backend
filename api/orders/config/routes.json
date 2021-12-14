@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/orders/me",
+      "handler": "orders.getMyOrders",
+      "config": {
+        "policies": ["before_find"]
+      }
+    },
+    {
+      "method": "GET",
       "path": "/orders/admin",
       "handler": "orders.find",
       "config": {

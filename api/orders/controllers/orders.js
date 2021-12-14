@@ -200,4 +200,41 @@ module.exports = {
         
         return res
     },
+    async getMyOrders(ctx) {
+        const query = {
+            userID: ctx.request.query["userID"],
+        };
+        const res = await strapi
+            .query("orders")
+            .model.aggregate([{ $match: query }, { $sort: { createdAt: -1 } }]);
+        const orders = sanitizeEntity(res, {
+            model: strapi.models.orders,
+        });
+        if (orders.length > 0) {
+            for (let orderIndex = 0; orderIndex < orders.length; orderIndex++) {
+                for (let i = 0; i < orders[orderIndex].products.length; i++) {
+                    const componentProduct = await strapi
+                        .services['components-custom-products']
+                        .findOne({ id:  Types.ObjectId(orders[orderIndex].products[i].ref)});
+                    if (!componentProduct) {
+                        continue
+                    }
+                    const product = await strapi.services['product'].findOne({
+                        id: Types.ObjectId(componentProduct.productID),
+                    });
+                    if (product) {
+                        orders[orderIndex].products[i] = {
+                            productID: componentProduct.productID,
+                            quantity: componentProduct.quantity,
+                            name: product.name,
+                            image: product.image,
+                            price: product.price,
+                            id: componentProduct.productID,
+                        }
+                    }
+                }
+            }
+        }
+        return orders
+    }
 };
