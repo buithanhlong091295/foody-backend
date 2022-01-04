@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "feedbacks",
+  "info": {
+    "name": "Feedbacks"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "username": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "richtext"
+    },
+    "productID": {
+      "type": "string"
+    }
+  }
+}
