@@ -9,8 +9,8 @@ module.exports = ({ env }) => ({
         tls: true,
           
         auth: {
-            user: "buithanhlong091295@gmail.com",
-            pass: "NhungOc1996!",
+            user: "FoodyAppKLTN@gmail.com",
+            pass: "admin@12345",
         },
         // ... any custom nodemailer options
       },
