@@ -26,6 +26,14 @@
     },
     {
       "method": "POST",
+      "path": "/vouchers/notify",
+      "handler": "vouchers.notifyByMail",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
       "path": "/vouchers",
       "handler": "vouchers.create",
       "config": {
