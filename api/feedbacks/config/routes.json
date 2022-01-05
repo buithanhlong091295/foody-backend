@@ -18,6 +18,14 @@
     },
     {
       "method": "GET",
+      "path": "/feedbacks/code/:code",
+      "handler": "feedbacks.findOneByCode",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/feedbacks/:id",
       "handler": "feedbacks.findOne",
       "config": {
