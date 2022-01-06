@@ -21,7 +21,7 @@
       "required": true
     },
     "promotionAmount": {
-      "type": "biginteger",
+      "type": "integer",
       "required": true
     },
     "isActive": {
@@ -30,7 +30,7 @@
       "required": false
     },
     "applyForOrderValue": {
-      "type": "biginteger",
+      "type": "integer",
       "required": true
     },
     "code": {

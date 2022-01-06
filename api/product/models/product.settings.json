@@ -20,7 +20,7 @@
       "required": true
     },
     "price": {
-      "type": "float"
+      "type": "integer"
     },
     "image": {
       "type": "string",
