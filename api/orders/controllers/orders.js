@@ -213,7 +213,6 @@ module.exports = {
         const orders = await sanitizeEntity(res, {
             model: strapi.models.orders,
         });
-        console.log(orders)
         if (orders.length > 0) {
             for (let orderIndex = 0; orderIndex < orders.length; orderIndex++) {
                 for (let i = 0; i < orders[orderIndex].products.length; i++) {

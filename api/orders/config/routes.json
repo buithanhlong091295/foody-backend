@@ -85,7 +85,7 @@
       "path": "/orders/:id",
       "handler": "orders.update",
       "config": {
-        "policies": []
+        "policies": ["before_update"]
       }
     },
     {
